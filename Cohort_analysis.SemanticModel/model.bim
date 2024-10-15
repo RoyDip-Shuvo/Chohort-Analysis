@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Year 2009-2010\",\"Year 2010-2011\"]"
+        "value": "[\"Fact_Sales\",\"Clean_Data_Function\",\"Dim_Customer\",\"StartDate\",\"EndDate\",\"DimDate\",\"_Measure\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -37,155 +37,107 @@
       "returnErrorValuesAsNull": true
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "Clean_Data_Function",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Function"
+          }
+        ],
+        "expression": [
+          "(DataSheet as table) =>",
+          "let",
+          "    #\"Promoted Headers\" = Table.PromoteHeaders(DataSheet, [PromoteAllScalars=true]),",
+          "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Invoice\", type any}, {\"StockCode\", type any}, {\"Description\", type text}, {\"Quantity\", Int64.Type}, {\"InvoiceDate\", type datetime}, {\"Price\", type number}, {\"Customer ID\", Int64.Type}, {\"Country\", type text}}),",
+          "    #\"Filtered Rows\" = Table.SelectRows(#\"Changed Type\", each ([Customer ID] <> null and [Customer ID] <> \"\")),",
+          "    #\"Removed Columns\" = Table.RemoveColumns(#\"Filtered Rows\",{\"StockCode\", \"Description\"}),",
+          "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Removed Columns\",{{\"Invoice\", type text}}),",
+          "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type1\", each not Text.StartsWith([Invoice], \"C\")),",
+          "    #\"Filtered Rows2\" = Table.SelectRows(#\"Filtered Rows1\", each [Price] > 0),",
+          "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Filtered Rows2\",{\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"})",
+          "in",
+          "    #\"Reordered Columns\""
+        ],
+        "kind": "m",
+        "lineageTag": "da2c3d4c-650d-41d5-8e7d-725fab63a2e4"
+      },
+      {
+        "name": "StartDate",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Date"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = #date(2009, 12, 1)",
+          "in",
+          "    Source"
+        ],
+        "kind": "m",
+        "lineageTag": "067827fe-59df-44b7-b82a-39addf8f231d"
+      },
+      {
+        "name": "EndDate",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Date"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = #date(2011, 12, 1)",
+          "in",
+          "    Source"
+        ],
+        "kind": "m",
+        "lineageTag": "b20e5a7e-7f49-484d-97e3-6afcccabd114"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "AutoDetected_10403d2c-a23e-4554-ae70-bb055c739657",
+        "fromColumn": "Customer ID",
+        "fromTable": "Fact_Sales",
+        "toColumn": "Customer ID",
+        "toTable": "Dim_Customer"
+      },
+      {
+        "name": "5e2ae74c-a7d5-e821-21a2-d8fc9be37f90",
+        "fromColumn": "InvoiceDate",
+        "fromTable": "Fact_Sales",
+        "toColumn": "Date",
+        "toTable": "DimDate"
+      }
+    ],
     "sourceQueryCulture": "en-US",
     "tables": [
       {
-        "name": "Year 2009-2010",
+        "name": "Fact_Sales",
         "annotations": [
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Invoice",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "02d35bff-abef-4f9f-8f7f-ed626fb80e56",
-            "sourceColumn": "Invoice",
-            "summarizeBy": "none"
           },
           {
-            "name": "StockCode",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "9694fdd6-2236-4d23-90ff-56ca50bcc7af",
-            "sourceColumn": "StockCode",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Description",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "4f3bf03b-4f79-4574-a195-00dcbc550459",
-            "sourceColumn": "Description",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Quantity",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "8e52b771-37df-4061-bbce-a65e4182d300",
-            "sourceColumn": "Quantity",
-            "summarizeBy": "sum"
-          },
-          {
-            "name": "InvoiceDate",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "dateTime",
-            "formatString": "General Date",
-            "lineageTag": "5a999de3-e47c-4295-a8c9-f4771d77da2c",
-            "sourceColumn": "InvoiceDate",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Price",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
-            "dataType": "double",
-            "lineageTag": "d07e7ae6-7ce6-46d8-a6e8-e0a9b8bb8757",
-            "sourceColumn": "Price",
-            "summarizeBy": "sum"
-          },
-          {
-            "name": "Customer ID",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "4daeef34-64cf-4dc0-b990-84767ebfaaec",
-            "sourceColumn": "Customer ID",
-            "summarizeBy": "count"
-          },
-          {
-            "name": "Country",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "3f13fe54-bedd-4e1e-beac-4b7e12249d74",
-            "sourceColumn": "Country",
-            "summarizeBy": "none"
-          }
-        ],
-        "lineageTag": "e1bc3ad4-ec92-4cb7-94ff-3e9c41cb4fdd",
-        "partitions": [
-          {
-            "name": "Year 2009-2010",
-            "mode": "import",
-            "source": {
-              "expression": [
-                "let",
-                "    Source = Excel.Workbook(File.Contents(\"H:\\_Portfolio Project Github\\Chohort Analysis\\online_retail_II.xlsx\"), null, true),",
-                "    #\"Year 2009-2010_Sheet\" = Source{[Item=\"Year 2009-2010\",Kind=\"Sheet\"]}[Data],",
-                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Year 2009-2010_Sheet\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Invoice\", type any}, {\"StockCode\", type any}, {\"Description\", type text}, {\"Quantity\", Int64.Type}, {\"InvoiceDate\", type datetime}, {\"Price\", type number}, {\"Customer ID\", Int64.Type}, {\"Country\", type text}})",
-                "in",
-                "    #\"Changed Type\""
-              ],
-              "type": "m"
-            }
-          }
-        ]
-      },
-      {
-        "name": "Year 2010-2011",
-        "annotations": [
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -200,32 +152,6 @@
             "dataType": "string",
             "lineageTag": "86577d39-6b6d-4331-857e-c81b137de7a6",
             "sourceColumn": "Invoice",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "StockCode",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "202c9496-b58f-408d-b353-0f387678a857",
-            "sourceColumn": "StockCode",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Description",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "0114dd92-ab1f-4d29-ba30-ce4b6f100a10",
-            "sourceColumn": "Description",
             "summarizeBy": "none"
           },
           {
@@ -248,10 +174,14 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
               }
             ],
             "dataType": "dateTime",
-            "formatString": "General Date",
+            "formatString": "Short Date",
             "lineageTag": "1c63196d-effd-4062-b786-662da7799c33",
             "sourceColumn": "InvoiceDate",
             "summarizeBy": "none"
@@ -268,7 +198,7 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "double",
+            "dataType": "decimal",
             "lineageTag": "dee25a75-d43b-4f08-bbc1-a4214f6262d5",
             "sourceColumn": "Price",
             "summarizeBy": "sum"
@@ -285,7 +215,7 @@
             "formatString": "0",
             "lineageTag": "137fae89-9733-4e05-9126-371237d630a2",
             "sourceColumn": "Customer ID",
-            "summarizeBy": "count"
+            "summarizeBy": "none"
           },
           {
             "name": "Country",
@@ -299,22 +229,282 @@
             "lineageTag": "309c9356-f66d-42b2-bd2b-3e5d0c0a1467",
             "sourceColumn": "Country",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ff873f9d-0b8c-4c39-b3b3-1180389eb483",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month Since First Transation",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              "    DATEDIFF(",
+              "        RELATED(Dim_Customer[First_transation_month]),",
+              "        RELATED(DimDate[Date]),",
+              "        MONTH",
+              "    )"
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "24c6335c-9b6c-4767-b584-58c2c355c0e8",
+            "summarizeBy": "sum",
+            "type": "calculated"
           }
         ],
         "lineageTag": "cf195353-8c47-48ce-9e85-820478ce5ede",
         "partitions": [
           {
-            "name": "Year 2010-2011",
+            "name": "Fact_Sales",
             "mode": "import",
             "source": {
               "expression": [
                 "let",
                 "    Source = Excel.Workbook(File.Contents(\"H:\\_Portfolio Project Github\\Chohort Analysis\\online_retail_II.xlsx\"), null, true),",
-                "    #\"Year 2010-2011_Sheet\" = Source{[Item=\"Year 2010-2011\",Kind=\"Sheet\"]}[Data],",
-                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Year 2010-2011_Sheet\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Invoice\", type any}, {\"StockCode\", type any}, {\"Description\", type text}, {\"Quantity\", Int64.Type}, {\"InvoiceDate\", type datetime}, {\"Price\", type number}, {\"Customer ID\", Int64.Type}, {\"Country\", type text}})",
+                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Kind] = \"Sheet\")),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Filtered Rows\",{\"Item\", \"Kind\", \"Hidden\"}),",
+                "    #\"Invoked Custom Function\" = Table.AddColumn(#\"Removed Columns\", \"Clean_Data\", each Clean_Data_Function([Data])),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Invoked Custom Function\",{\"Data\"}),",
+                "    #\"Expanded Clean_Data\" = Table.ExpandTableColumn(#\"Removed Columns1\", \"Clean_Data\", {\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"}, {\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded Clean_Data\",{{\"InvoiceDate\", type date}}),",
+                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type\", each true),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"Quantity\", Int64.Type}, {\"Price\", Currency.Type}, {\"Customer ID\", Int64.Type}, {\"Invoice\", type text}})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Changed Type1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Customer",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "fa86e4ac-7b92-4a05-9349-05e5aefdfe28",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "First_transation_month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "846bfa7d-a4e6-4bf2-85ad-fed120b4f346",
+            "sourceColumn": "First_transation_month",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0c0424eb-3cd8-493a-9b5a-f0f8063cf424",
+        "partitions": [
+          {
+            "name": "Dim_Customer",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Fact_Sales,",
+                "    #\"Grouped Rows\" = Table.Group(Source, {\"Customer ID\"}, {{\"First_transation_month\", each List.Min([InvoiceDate]), type nullable date}}),",
+                "    #\"Calculated Start of Month\" = Table.TransformColumns(#\"Grouped Rows\",{{\"First_transation_month\", Date.StartOfMonth, type date}})",
+                "in",
+                "    #\"Calculated Start of Month\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "15c03722-02a5-4377-ad9b-315d45bd918f",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Start of Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "fcdecbb5-4cfd-487b-bf3f-b2bd49eae75d",
+            "sourceColumn": "Start of Month",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "9c4200b0-3e2e-4451-b8f0-a4b93fac6d60",
+        "partitions": [
+          {
+            "name": "DimDate",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = {Number.From(StartDate)..Number.From(EndDate)},",
+                "    #\"Converted to Table\" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Converted to Table\",{{\"Column1\", type date}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Column1\", \"Date\"}}),",
+                "    #\"Inserted Start of Month\" = Table.AddColumn(#\"Renamed Columns\", \"Start of Month\", each Date.StartOfMonth([Date]), type date)",
+                "in",
+                "    #\"Inserted Start of Month\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "_Measure",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "lineageTag": "841983c5-1ba6-4120-baf5-473c445cb668",
+        "measures": [
+          {
+            "name": "Total Revenue",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "SUMX(Fact_Sales, Fact_Sales[Quantity]*Fact_Sales[Price])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "8e3bb74a-42c5-4467-85ea-0ca96c4289a7"
+          },
+          {
+            "name": "Total Orders",
+            "expression": "DISTINCTCOUNT(Fact_Sales[Invoice])",
+            "formatString": "0",
+            "lineageTag": "2208aefe-bc4c-4c51-9e1d-bdd54d7002e3"
+          },
+          {
+            "name": "Total Unit Sold",
+            "expression": "SUM(Fact_Sales[Quantity])",
+            "formatString": "0",
+            "lineageTag": "c9d02731-3e2a-4b6e-b772-1576e6f736de"
+          },
+          {
+            "name": "Total Customer",
+            "expression": "COUNTROWS(Dim_Customer)",
+            "formatString": "0",
+            "lineageTag": "bdfb47a3-89ed-4372-b1a7-2830458ef6f0"
+          },
+          {
+            "name": "Average Revenue",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "DIVIDE([Total Revenue], [Total Customer])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "8f956741-43d7-43e5-8ded-97aac5a146a1"
+          },
+          {
+            "name": "Average Order Value",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "DIVIDE([Total Revenue], [Total Orders])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "57221760-81be-46be-88d8-e9bad8b321dd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_Measure",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }

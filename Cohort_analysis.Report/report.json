@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.58\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.58\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -25,7 +25,17 @@
       "filters": "[]",
       "height": 900.00,
       "name": "595b65429458e5cdba33",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"31870af78208c0bc7713\",\"layouts\":[{\"id\":0,\"position\":{\"x\":32.42400623538582,\"y\":91.03663289166018,\"z\":0,\"width\":1480.2805923616525,\"height\":158.3787996882307}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measure.Total Revenue\"},{\"queryRef\":\"_Measure.Total Orders\"},{\"queryRef\":\"_Measure.Total Unit Sold\"},{\"queryRef\":\"_Measure.Total Customer\"},{\"queryRef\":\"_Measure.Average Revenue\"},{\"queryRef\":\"_Measure.Average Order Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"},\"Name\":\"_Measure.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Orders\"},\"Name\":\"_Measure.Total Orders\",\"NativeReferenceName\":\"Total Orders\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Unit Sold\"},\"Name\":\"_Measure.Total Unit Sold\",\"NativeReferenceName\":\"Total Unit Sold\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Customer\"},\"Name\":\"_Measure.Total Customer\",\"NativeReferenceName\":\"Total Customer\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Revenue\"},\"Name\":\"_Measure.Average Revenue\",\"NativeReferenceName\":\"Average Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Order Value\"},\"Name\":\"_Measure.Average Order Value\",\"NativeReferenceName\":\"Average Order Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 158.38,
+          "width": 1480.28,
+          "x": 32.42,
+          "y": 91.04,
+          "z": 0.00
+        }
+      ],
       "width": 1600.00
     }
   ]
