@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Cohort_analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d5781c65-7901-496d-84df-4cdc8079522d"
+  }
+}

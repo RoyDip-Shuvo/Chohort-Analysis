@@ -1,0 +1,326 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.136.1478.0 (24.09)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Year 2009-2010\",\"Year 2010-2011\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Year 2009-2010",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Invoice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "02d35bff-abef-4f9f-8f7f-ed626fb80e56",
+            "sourceColumn": "Invoice",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "StockCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9694fdd6-2236-4d23-90ff-56ca50bcc7af",
+            "sourceColumn": "StockCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Description",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4f3bf03b-4f79-4574-a195-00dcbc550459",
+            "sourceColumn": "Description",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8e52b771-37df-4061-bbce-a65e4182d300",
+            "sourceColumn": "Quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "InvoiceDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "5a999de3-e47c-4295-a8c9-f4771d77da2c",
+            "sourceColumn": "InvoiceDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "d07e7ae6-7ce6-46d8-a6e8-e0a9b8bb8757",
+            "sourceColumn": "Price",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4daeef34-64cf-4dc0-b990-84767ebfaaec",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3f13fe54-bedd-4e1e-beac-4b7e12249d74",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "e1bc3ad4-ec92-4cb7-94ff-3e9c41cb4fdd",
+        "partitions": [
+          {
+            "name": "Year 2009-2010",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"H:\\_Portfolio Project Github\\Chohort Analysis\\online_retail_II.xlsx\"), null, true),",
+                "    #\"Year 2009-2010_Sheet\" = Source{[Item=\"Year 2009-2010\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Year 2009-2010_Sheet\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Invoice\", type any}, {\"StockCode\", type any}, {\"Description\", type text}, {\"Quantity\", Int64.Type}, {\"InvoiceDate\", type datetime}, {\"Price\", type number}, {\"Customer ID\", Int64.Type}, {\"Country\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Year 2010-2011",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Invoice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "86577d39-6b6d-4331-857e-c81b137de7a6",
+            "sourceColumn": "Invoice",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "StockCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "202c9496-b58f-408d-b353-0f387678a857",
+            "sourceColumn": "StockCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Description",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0114dd92-ab1f-4d29-ba30-ce4b6f100a10",
+            "sourceColumn": "Description",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "80224408-7b3b-4b44-80a4-51b7eca4a341",
+            "sourceColumn": "Quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "InvoiceDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "1c63196d-effd-4062-b786-662da7799c33",
+            "sourceColumn": "InvoiceDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "dee25a75-d43b-4f08-bbc1-a4214f6262d5",
+            "sourceColumn": "Price",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "137fae89-9733-4e05-9126-371237d630a2",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "309c9356-f66d-42b2-bd2b-3e5d0c0a1467",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "cf195353-8c47-48ce-9e85-820478ce5ede",
+        "partitions": [
+          {
+            "name": "Year 2010-2011",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"H:\\_Portfolio Project Github\\Chohort Analysis\\online_retail_II.xlsx\"), null, true),",
+                "    #\"Year 2010-2011_Sheet\" = Source{[Item=\"Year 2010-2011\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Year 2010-2011_Sheet\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Invoice\", type any}, {\"StockCode\", type any}, {\"Description\", type text}, {\"Quantity\", Int64.Type}, {\"InvoiceDate\", type datetime}, {\"Price\", type number}, {\"Customer ID\", Int64.Type}, {\"Country\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
