@@ -8,7 +8,7 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.136.1478.0 (24.09)"
+        "value": "2.137.751.0 (24.10)"
       },
       {
         "name": "PBI_QueryOrder",
@@ -283,9 +283,10 @@
                 "    #\"Expanded Clean_Data\" = Table.ExpandTableColumn(#\"Removed Columns1\", \"Clean_Data\", {\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"}, {\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"}),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded Clean_Data\",{{\"InvoiceDate\", type date}}),",
                 "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type\", each true),",
-                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"Quantity\", Int64.Type}, {\"Price\", Currency.Type}, {\"Customer ID\", Int64.Type}, {\"Invoice\", type text}})",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"Quantity\", Int64.Type}, {\"Price\", Currency.Type}, {\"Customer ID\", Int64.Type}, {\"Invoice\", type text}}),",
+                "    #\"Filtered Rows2\" = Table.SelectRows(#\"Changed Type1\", each true)",
                 "in",
-                "    #\"Changed Type1\""
+                "    #\"Filtered Rows2\""
               ],
               "type": "m"
             }
@@ -398,10 +399,14 @@
               {
                 "name": "UnderlyingDateTimeDataType",
                 "value": "Date"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDateTimeCustom\":true}"
               }
             ],
             "dataType": "dateTime",
-            "formatString": "Short Date",
+            "formatString": "mmmm d\\, yyyy",
             "lineageTag": "fcdecbb5-4cfd-487b-bf3f-b2bd49eae75d",
             "sourceColumn": "Start of Month",
             "summarizeBy": "none"
@@ -446,24 +451,28 @@
                 "value": "{\"currencyCulture\":\"en-US\"}"
               }
             ],
+            "displayFolder": "Regular Measure",
             "expression": "SUMX(Fact_Sales, Fact_Sales[Quantity]*Fact_Sales[Price])",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "8e3bb74a-42c5-4467-85ea-0ca96c4289a7"
           },
           {
             "name": "Total Orders",
+            "displayFolder": "Regular Measure",
             "expression": "DISTINCTCOUNT(Fact_Sales[Invoice])",
             "formatString": "0",
             "lineageTag": "2208aefe-bc4c-4c51-9e1d-bdd54d7002e3"
           },
           {
             "name": "Total Unit Sold",
+            "displayFolder": "Regular Measure",
             "expression": "SUM(Fact_Sales[Quantity])",
             "formatString": "0",
             "lineageTag": "c9d02731-3e2a-4b6e-b772-1576e6f736de"
           },
           {
             "name": "Total Customer",
+            "displayFolder": "Regular Measure",
             "expression": "COUNTROWS(Dim_Customer)",
             "formatString": "0",
             "lineageTag": "bdfb47a3-89ed-4372-b1a7-2830458ef6f0"
@@ -476,6 +485,7 @@
                 "value": "{\"currencyCulture\":\"en-US\"}"
               }
             ],
+            "displayFolder": "Regular Measure",
             "expression": "DIVIDE([Total Revenue], [Total Customer])",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "8f956741-43d7-43e5-8ded-97aac5a146a1"
@@ -488,9 +498,121 @@
                 "value": "{\"currencyCulture\":\"en-US\"}"
               }
             ],
+            "displayFolder": "Regular Measure",
             "expression": "DIVIDE([Total Revenue], [Total Orders])",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "57221760-81be-46be-88d8-e9bad8b321dd"
+          },
+          {
+            "name": "PM Revenue",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "displayFolder": "Regular Measure",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Total Revenue],",
+              "    DATEADD(DimDate[Date], -1, MONTH)",
+              ")"
+            ],
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "ac9dd75a-18ad-411e-b489-69e178f763f5"
+          },
+          {
+            "name": "PM Order",
+            "displayFolder": "Regular Measure",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Total Orders],",
+              "    DATEADD(DimDate[Date], -1, MONTH)",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "64647cca-e5f3-400a-bf69-070f7ab6dbd2"
+          },
+          {
+            "name": "Active Customer",
+            "displayFolder": "Cohort Measure",
+            "expression": [
+              "",
+              "COUNTROWS(VALUES(Fact_Sales[Customer ID]))"
+            ],
+            "formatString": "0",
+            "lineageTag": "8f1e396d-eb36-431e-8bbb-17407e8affc1"
+          },
+          {
+            "name": "New Customer",
+            "displayFolder": "Cohort Measure",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Active Customer],",
+              "    Fact_Sales[Month Since First Transation]=0)"
+            ],
+            "formatString": "0",
+            "lineageTag": "8e4e5f93-55cc-4c14-a3ca-b3b8582a1e17"
+          },
+          {
+            "name": "Cohort Performance",
+            "displayFolder": "Cohort Measure",
+            "expression": [
+              "",
+              "",
+              "VAR _minDate = MIN(DimDate[Start of Month])",
+              "",
+              "VAR _maxDate = MAX(DimDate[Start of Month])",
+              "",
+              "RETURN",
+              "    CALCULATE(",
+              "        [Active Customer],",
+              "        REMOVEFILTERS(DimDate[Start of Month]),",
+              "        RELATEDTABLE(Dim_Customer),",
+              "        Dim_Customer[First_transation_month]>= _minDate",
+              "            && Dim_Customer[First_transation_month]<= _maxDate",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "bcf8df61-8e0a-46db-83dc-97a97cfcf7fb"
+          },
+          {
+            "name": "Retaind Customers",
+            "displayFolder": "Cohort Measure",
+            "expression": [
+              "",
+              "VAR _ThisMonth=VALUES(Fact_Sales[Customer ID])",
+              "VAR _LastMonth = CALCULATETABLE(",
+              "    VALUES(Fact_Sales[Customer ID]),",
+              "    PREVIOUSMONTH(DimDate[Start of Month])",
+              ")",
+              "VAR _RetaindCustomer = ",
+              "    INTERSECT(_ThisMonth, _LastMonth)",
+              "RETURN",
+              "COUNTROWS(_RetaindCustomer)"
+            ],
+            "formatString": "0",
+            "lineageTag": "9af8baa1-fc0a-46c4-9a28-3636042495a7"
+          },
+          {
+            "name": "Retaintion Pct",
+            "displayFolder": "Cohort Measure",
+            "expression": [
+              "",
+              "DIVIDE([Cohort Performance], [New Customer])"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "dc4c3b31-190e-475c-b5ae-e799e901a826"
+          },
+          {
+            "name": "Churn Customer",
+            "displayFolder": "Cohort Measure",
+            "expression": "[New Customer] - [Cohort Performance]",
+            "formatString": "0",
+            "lineageTag": "0a56d6b7-991f-4a8c-aca6-33614cf49887"
           }
         ],
         "partitions": [

@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.58\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.58\",\"type\":2}},\"activeSectionIndex\":3,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -20,6 +20,77 @@
   "sections": [
     {
       "config": "{}",
+      "displayName": "Duplicate of Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "257fa16623948b3a7b3d",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"345b43c840cb8ee66ac3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":18.141732283464567,\"z\":0,\"width\":1280,\"height\":678.2992125984252,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"DimDate.Start of Month\",\"active\":true}],\"Columns\":[{\"queryRef\":\"Fact_Sales.Month Since First Transation\",\"active\":true}],\"Values\":[{\"queryRef\":\"_Measure.Cohort Performance\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact_Sales\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"},\"Name\":\"DimDate.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Month Since First Transation\"},\"Name\":\"Fact_Sales.Month Since First Transation\",\"NativeReferenceName\":\"Month Since First Transation\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Cohort Performance\"},\"Name\":\"_Measure.Cohort Performance\",\"NativeReferenceName\":\"Cohort Performance\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"51.07691802821131D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fact_Sales\"}},\"Property\":\"Month Since First Transation\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}]}}],\"subTotals\":[{\"properties\":{\"columnSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"rowSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"values\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"8D\"}}}}}],\"grid\":[{\"properties\":{\"rowPadding\":{\"expr\":{\"Literal\":{\"Value\":\"4D\"}}}}}]}}}",
+          "filters": "[{\"name\":\"e147b3c2dd9eee0d7d3e\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fact_Sales\"}},\"Property\":\"Month Since First Transation\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact_Sales\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Month Since First Transation\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 678.30,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 18.14,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 3",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "2d5a5ac3c20e1a6a9611",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"05297d30272e31e603d7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":64.84801247077162,\"z\":0,\"width\":616.5549493374903,\"height\":280.34294621979734,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimDate.Start of Month\"}],\"Y\":[{\"queryRef\":\"_Measure.New Customer\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"},\"Name\":\"DimDate.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"New Customer\"},\"Name\":\"_Measure.New Customer\",\"NativeReferenceName\":\"New Customer\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"}}}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.34,
+          "width": 616.55,
+          "x": 0.00,
+          "y": 64.85,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"12df7a4e4ab419e30d66\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":360.1558846453624,\"z\":2,\"width\":931.8160561184723,\"height\":280.34294621979734,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimDate.Start of Month\"}],\"Y\":[{\"queryRef\":\"_Measure.Churn Customer\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"},\"Name\":\"DimDate.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Churn Customer\"},\"Name\":\"_Measure.Churn Customer\",\"NativeReferenceName\":\"Churn Customer\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"}}}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.34,
+          "width": 931.82,
+          "x": 0.00,
+          "y": 360.16,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"9cb79bfedb825e1b7600\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640.4988308651597,\"y\":79.81293842556508,\"z\":1,\"width\":616.5549493374903,\"height\":280.34294621979734,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimDate.Start of Month\"}],\"Y\":[{\"queryRef\":\"_Measure.Active Customer\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"},\"Name\":\"DimDate.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Active Customer\"},\"Name\":\"_Measure.Active Customer\",\"NativeReferenceName\":\"Active Customer\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"}}}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.34,
+          "width": 616.55,
+          "x": 640.50,
+          "y": 79.81,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 4",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "48b271e5ee7c2bb0cd09",
+      "ordinal": 4,
+      "visualContainers": [],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
       "displayName": "Page 1",
       "displayOption": 1,
       "filters": "[]",
@@ -27,16 +98,64 @@
       "name": "595b65429458e5cdba33",
       "visualContainers": [
         {
-          "config": "{\"name\":\"31870af78208c0bc7713\",\"layouts\":[{\"id\":0,\"position\":{\"x\":32.42400623538582,\"y\":91.03663289166018,\"z\":0,\"width\":1480.2805923616525,\"height\":158.3787996882307}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measure.Total Revenue\"},{\"queryRef\":\"_Measure.Total Orders\"},{\"queryRef\":\"_Measure.Total Unit Sold\"},{\"queryRef\":\"_Measure.Total Customer\"},{\"queryRef\":\"_Measure.Average Revenue\"},{\"queryRef\":\"_Measure.Average Order Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"},\"Name\":\"_Measure.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Orders\"},\"Name\":\"_Measure.Total Orders\",\"NativeReferenceName\":\"Total Orders\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Unit Sold\"},\"Name\":\"_Measure.Total Unit Sold\",\"NativeReferenceName\":\"Total Unit Sold\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Customer\"},\"Name\":\"_Measure.Total Customer\",\"NativeReferenceName\":\"Total Customer\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Revenue\"},\"Name\":\"_Measure.Average Revenue\",\"NativeReferenceName\":\"Average Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Order Value\"},\"Name\":\"_Measure.Average Order Value\",\"NativeReferenceName\":\"Average Order Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"31870af78208c0bc7713\",\"layouts\":[{\"id\":0,\"position\":{\"x\":32.42400623538582,\"y\":91.03663289166018,\"z\":0,\"width\":1480.2805923616525,\"height\":158.3787996882307,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measure.Total Revenue\"},{\"queryRef\":\"_Measure.Total Orders\"},{\"queryRef\":\"_Measure.Total Unit Sold\"},{\"queryRef\":\"_Measure.Total Customer\"},{\"queryRef\":\"_Measure.Average Revenue\"},{\"queryRef\":\"_Measure.Average Order Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"},\"Name\":\"_Measure.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Orders\"},\"Name\":\"_Measure.Total Orders\",\"NativeReferenceName\":\"Total Orders\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Unit Sold\"},\"Name\":\"_Measure.Total Unit Sold\",\"NativeReferenceName\":\"Total Unit Sold\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Customer\"},\"Name\":\"_Measure.Total Customer\",\"NativeReferenceName\":\"Total Customer\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Revenue\"},\"Name\":\"_Measure.Average Revenue\",\"NativeReferenceName\":\"Average Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Order Value\"},\"Name\":\"_Measure.Average Order Value\",\"NativeReferenceName\":\"Average Order Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
           "height": 158.38,
           "width": 1480.28,
           "x": 32.42,
           "y": 91.04,
           "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"77f549841341170d996b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":361.65237724084176,\"y\":310.5222135619641,\"z\":2000,\"width\":283.0865159781761,\"height\":158.3787996882307,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measure.PM Order\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"PM Order\"},\"Name\":\"_Measure.PM Order\",\"NativeReferenceName\":\"PM Order\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 158.38,
+          "width": 283.09,
+          "x": 361.65,
+          "y": 310.52,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"8e4e2bc03b16c8ceccbd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":694.6219797349961,\"y\":310.5222135619641,\"z\":1000,\"width\":380.35853468433356,\"height\":158.3787996882307,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measure.Total Revenue\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Revenue\"},\"Name\":\"_Measure.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 158.38,
+          "width": 380.36,
+          "x": 694.62,
+          "y": 310.52,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"fcac9e315a2ec6c036b6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":956.5081839438815,\"y\":530.0077942322681,\"z\":3000,\"width\":554.9493374902572,\"height\":158.3787996882307,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_Measure.Active Customer\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Active Customer\"},\"Name\":\"_Measure.Active Customer\",\"NativeReferenceName\":\"Active Customer\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 158.38,
+          "width": 554.95,
+          "x": 956.51,
+          "y": 530.01,
+          "z": 3000.00
         }
       ],
       "width": 1600.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "6ac3c69e140e289ba580",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"a905a54f38c50092c20c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":58.208955223880594,\"y\":79.70149253731343,\"z\":0,\"width\":1001.1940298507462,\"height\":516.7164179104477,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"DimDate.Start of Month\",\"active\":true}],\"Values\":[{\"queryRef\":\"_Measure.Cohort Performance\"}],\"Columns\":[{\"queryRef\":\"Fact_Sales.Month Since First Transation\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Measure\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact_Sales\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"},\"Name\":\"DimDate.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Cohort Performance\"},\"Name\":\"_Measure.Cohort Performance\",\"NativeReferenceName\":\"Cohort Performance\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Month Since First Transation\"},\"Name\":\"Fact_Sales.Month Since First Transation\",\"NativeReferenceName\":\"Month Since First Transation\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Start of Month\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"39.9859714539774D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fact_Sales\"}},\"Property\":\"Month Since First Transation\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}]}}],\"subTotals\":[{\"properties\":{\"columnSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"rowSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 516.72,
+          "width": 1001.19,
+          "x": 58.21,
+          "y": 79.70,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
     }
   ]
 }
