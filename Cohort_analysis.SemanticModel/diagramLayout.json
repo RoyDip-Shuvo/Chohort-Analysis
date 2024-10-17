@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 117,
-            "y": 308
+            "y": 344
           },
           "nodeIndex": "Fact_Sales",
           "nodeLineageTag": "cf195353-8c47-48ce-9e85-820478ce5ede",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 0,
-            "y": 72
+            "y": 108
           },
           "nodeIndex": "Dim_Customer",
           "nodeLineageTag": "0c0424eb-3cd8-493a-9b5a-f0f8063cf424",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 284,
-            "y": 72
+            "y": 108
           },
           "nodeIndex": "DimDate",
           "nodeLineageTag": "9c4200b0-3e2e-4451-b8f0-a4b93fac6d60",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 1136,
-            "y": 84
+            "y": 120
           },
           "nodeIndex": "_Measure",
           "nodeLineageTag": "841983c5-1ba6-4120-baf5-473c445cb668",
@@ -59,6 +59,19 @@
             "width": 234
           },
           "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 214
+          },
+          "nodeIndex": "Parameter",
+          "nodeLineageTag": "57e96fc2-7bca-4354-a5ce-85d5a49831e9",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
