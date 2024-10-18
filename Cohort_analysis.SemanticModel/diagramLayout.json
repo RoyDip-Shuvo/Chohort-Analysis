@@ -36,8 +36,8 @@
         },
         {
           "location": {
-            "x": 284,
-            "y": 108
+            "x": 405,
+            "y": 99
           },
           "nodeIndex": "DimDate",
           "nodeLineageTag": "9c4200b0-3e2e-4451-b8f0-a4b93fac6d60",
@@ -49,8 +49,8 @@
         },
         {
           "location": {
-            "x": 1136,
-            "y": 120
+            "x": 838,
+            "y": 117
           },
           "nodeIndex": "_Measure",
           "nodeLineageTag": "841983c5-1ba6-4120-baf5-473c445cb668",

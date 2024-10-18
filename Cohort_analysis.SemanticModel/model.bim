@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Fact_Sales\",\"Clean_Data_Function\",\"Dim_Customer\",\"StartDate\",\"EndDate\",\"DimDate\",\"_Measure\"]"
+        "value": "[\"Clean_Data_Function\",\"StartDate\",\"EndDate\",\"DimDate\",\"_Measure\",\"Fact_Sales\",\"Data_Clining_Function\",\"Dim_Customer\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -524,7 +524,7 @@
                     }
                   },
                   {
-                    "Cohort": {
+                    "Cohort_Month": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -930,74 +930,28 @@
                   }
                 ]
               },
-              "fact_sale.month_since_first_transation": {
+              "fact_sale.month_since_first_transaction": {
                 "Definition": {
                   "Binding": {
                     "ConceptualEntity": "Fact_Sales",
-                    "ConceptualProperty": "Month Since First Transation"
+                    "ConceptualProperty": "Month Since First Transaction"
                   }
                 },
                 "State": "Generated",
                 "Terms": [
                   {
-                    "month since first transation": {
+                    "month since first transaction": {
                       "State": "Generated"
                     }
                   },
                   {
-                    "mth since first transation": {
+                    "mth since first transaction": {
                       "Source": {
                         "Agent": "Thesaurus"
                       },
                       "State": "Suggested",
                       "Type": "Noun",
                       "Weight": 0.771
-                    }
-                  }
-                ]
-              },
-              "fact_sale.name": {
-                "Definition": {
-                  "Binding": {
-                    "ConceptualEntity": "Fact_Sales",
-                    "ConceptualProperty": "Name"
-                  }
-                },
-                "State": "Generated",
-                "Terms": [
-                  {
-                    "name": {
-                      "State": "Generated"
-                    }
-                  },
-                  {
-                    "title": {
-                      "Source": {
-                        "Agent": "Thesaurus"
-                      },
-                      "State": "Suggested",
-                      "Type": "Noun",
-                      "Weight": 0.714
-                    }
-                  },
-                  {
-                    "label": {
-                      "Source": {
-                        "Agent": "Thesaurus"
-                      },
-                      "State": "Suggested",
-                      "Type": "Noun",
-                      "Weight": 0.714
-                    }
-                  },
-                  {
-                    "tag": {
-                      "Source": {
-                        "Agent": "Thesaurus"
-                      },
-                      "State": "Suggested",
-                      "Type": "Noun",
-                      "Weight": 0.714
                     }
                   }
                 ]
@@ -2966,6 +2920,26 @@
                       "Type": "Noun",
                       "Weight": 0.736
                     }
+                  },
+                  {
+                    "N_C %": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "N_C": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
                   }
                 ]
               },
@@ -3088,6 +3062,26 @@
                       "Type": "Noun",
                       "Weight": 0.491
                     }
+                  },
+                  {
+                    "Rec_C %": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Rec_C": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
                   }
                 ]
               },
@@ -3204,6 +3198,26 @@
                       "Type": "Noun",
                       "Weight": 0.485
                     }
+                  },
+                  {
+                    "Ret_C %": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Ret_C": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
                   }
                 ]
               },
@@ -3319,6 +3333,35 @@
                       "State": "Suggested",
                       "Type": "Noun",
                       "Weight": 0.485
+                    }
+                  }
+                ]
+              },
+              "v_Measure_measure.t_c": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "_Measure",
+                    "ConceptualProperty": "T_C"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "t c": {
+                      "State": "Generated"
+                    }
+                  },
+                  {
+                    "T_C": {
+                      "State": "Generated",
+                      "Type": "Noun",
+                      "Weight": 0.99
+                    }
+                  },
+                  {
+                    "c": {
+                      "State": "Generated",
+                      "Weight": 0.97
                     }
                   }
                 ]
@@ -3808,6 +3851,52 @@
             },
             "Language": "en-US",
             "Relationships": {
+              "dim_customer_has_customer_ID": {
+                "Binding": {
+                  "ConceptualEntity": "Dim_Customer"
+                },
+                "Phrasings": [
+                  {
+                    "Attribute": {
+                      "Object": {
+                        "Role": "dim_customer.customer_ID"
+                      },
+                      "Subject": {
+                        "Role": "dim_customer"
+                      }
+                    },
+                    "ID": "dim_customers_have_customer_ID",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  },
+                  {
+                    "ID": "customer_ID_are_names_IDs_of_dim_customers",
+                    "Name": {
+                      "Name": {
+                        "Role": "dim_customer.customer_ID"
+                      },
+                      "Subject": {
+                        "Role": "dim_customer"
+                      }
+                    },
+                    "State": "Generated",
+                    "Weight": 0.99
+                  }
+                ],
+                "Roles": {
+                  "dim_customer": {
+                    "Target": {
+                      "Entity": "dim_customer"
+                    }
+                  },
+                  "dim_customer.customer_ID": {
+                    "Target": {
+                      "Entity": "dim_customer.customer_ID"
+                    }
+                  }
+                },
+                "State": "Generated"
+              },
               "dim_customer_has_first_transation_month": {
                 "Binding": {
                   "ConceptualEntity": "Dim_Customer"
@@ -3902,52 +3991,6 @@
                   "v_Measure_measure.total_customer": {
                     "Target": {
                       "Entity": "v_Measure_measure.total_customer"
-                    }
-                  }
-                },
-                "State": "Generated"
-              },
-              "dim_customer_is_named_customer_ID": {
-                "Binding": {
-                  "ConceptualEntity": "Dim_Customer"
-                },
-                "Phrasings": [
-                  {
-                    "ID": "customer_ID_are_names_IDs_of_dim_customers",
-                    "Name": {
-                      "Name": {
-                        "Role": "dim_customer.customer_ID"
-                      },
-                      "Subject": {
-                        "Role": "dim_customer"
-                      }
-                    },
-                    "State": "Generated",
-                    "Weight": 0.99
-                  },
-                  {
-                    "Attribute": {
-                      "Object": {
-                        "Role": "dim_customer.customer_ID"
-                      },
-                      "Subject": {
-                        "Role": "dim_customer"
-                      }
-                    },
-                    "ID": "dim_customers_have_customer_ID",
-                    "State": "Generated",
-                    "Weight": 0.99
-                  }
-                ],
-                "Roles": {
-                  "dim_customer": {
-                    "Target": {
-                      "Entity": "dim_customer"
-                    }
-                  },
-                  "dim_customer.customer_ID": {
-                    "Target": {
-                      "Entity": "dim_customer.customer_ID"
                     }
                   }
                 },
@@ -4210,7 +4253,7 @@
                 },
                 "State": "Generated"
               },
-              "fact_sale_has_month_since_first_transation": {
+              "fact_sale_has_month_since_first_transaction": {
                 "Binding": {
                   "ConceptualEntity": "Fact_Sales"
                 },
@@ -4218,13 +4261,13 @@
                   {
                     "Attribute": {
                       "Object": {
-                        "Role": "fact_sale.month_since_first_transation"
+                        "Role": "fact_sale.month_since_first_transaction"
                       },
                       "Subject": {
                         "Role": "fact_sale"
                       }
                     },
-                    "ID": "fact_sales_have_month_since_first_transation",
+                    "ID": "fact_sales_have_month_since_first_transaction",
                     "State": "Generated",
                     "Weight": 0.99
                   }
@@ -4235,15 +4278,15 @@
                       "Entity": "fact_sale"
                     }
                   },
-                  "fact_sale.month_since_first_transation": {
+                  "fact_sale.month_since_first_transaction": {
                     "Target": {
-                      "Entity": "fact_sale.month_since_first_transation"
+                      "Entity": "fact_sale.month_since_first_transaction"
                     }
                   }
                 },
                 "State": "Generated"
               },
-              "fact_sale_has_name": {
+              "fact_sale_has_price": {
                 "Binding": {
                   "ConceptualEntity": "Fact_Sales"
                 },
@@ -4251,13 +4294,40 @@
                   {
                     "Attribute": {
                       "Object": {
-                        "Role": "fact_sale.name"
+                        "Role": "fact_sale.price"
                       },
                       "Subject": {
                         "Role": "fact_sale"
                       }
                     },
-                    "ID": "fact_sales_have_names",
+                    "ID": "fact_sales_have_prices",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  },
+                  {
+                    "Adjective": {
+                      "Adjectives": [
+                        {
+                          "expensive": {
+                            "State": "Generated"
+                          }
+                        }
+                      ],
+                      "Antonyms": [
+                        {
+                          "cheap": {
+                            "State": "Generated"
+                          }
+                        }
+                      ],
+                      "Measurement": {
+                        "Role": "fact_sale.price"
+                      },
+                      "Subject": {
+                        "Role": "fact_sale"
+                      }
+                    },
+                    "ID": "price_indicates_how_expensive_fact_sales_are",
                     "State": "Generated",
                     "Weight": 0.99
                   }
@@ -4268,9 +4338,9 @@
                       "Entity": "fact_sale"
                     }
                   },
-                  "fact_sale.name": {
+                  "fact_sale.price": {
                     "Target": {
-                      "Entity": "fact_sale.name"
+                      "Entity": "fact_sale.price"
                     }
                   }
                 },
@@ -4738,6 +4808,39 @@
                 },
                 "State": "Generated"
               },
+              "fact_sale_has_v_Measure_measure_t_c": {
+                "Binding": {
+                  "ConceptualEntity": "Fact_Sales"
+                },
+                "Phrasings": [
+                  {
+                    "Attribute": {
+                      "Object": {
+                        "Role": "v_Measure_measure.t_c"
+                      },
+                      "Subject": {
+                        "Role": "fact_sale"
+                      }
+                    },
+                    "ID": "fact_sales_have_t_c",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  }
+                ],
+                "Roles": {
+                  "fact_sale": {
+                    "Target": {
+                      "Entity": "fact_sale"
+                    }
+                  },
+                  "v_Measure_measure.t_c": {
+                    "Target": {
+                      "Entity": "v_Measure_measure.t_c"
+                    }
+                  }
+                },
+                "State": "Generated"
+              },
               "fact_sale_has_v_Measure_measure_total_orders": {
                 "Binding": {
                   "ConceptualEntity": "Fact_Sales"
@@ -4882,66 +4985,6 @@
                 },
                 "State": "Generated"
               },
-              "fact_sale_is_expensive": {
-                "Binding": {
-                  "ConceptualEntity": "Fact_Sales"
-                },
-                "Phrasings": [
-                  {
-                    "Adjective": {
-                      "Adjectives": [
-                        {
-                          "expensive": {
-                            "State": "Generated"
-                          }
-                        }
-                      ],
-                      "Antonyms": [
-                        {
-                          "cheap": {
-                            "State": "Generated"
-                          }
-                        }
-                      ],
-                      "Measurement": {
-                        "Role": "fact_sale.price"
-                      },
-                      "Subject": {
-                        "Role": "fact_sale"
-                      }
-                    },
-                    "ID": "price_indicates_how_expensive_fact_sales_are",
-                    "State": "Generated",
-                    "Weight": 0.99
-                  },
-                  {
-                    "Attribute": {
-                      "Object": {
-                        "Role": "fact_sale.price"
-                      },
-                      "Subject": {
-                        "Role": "fact_sale"
-                      }
-                    },
-                    "ID": "fact_sales_have_prices",
-                    "State": "Generated",
-                    "Weight": 0.99
-                  }
-                ],
-                "Roles": {
-                  "fact_sale": {
-                    "Target": {
-                      "Entity": "fact_sale"
-                    }
-                  },
-                  "fact_sale.price": {
-                    "Target": {
-                      "Entity": "fact_sale.price"
-                    }
-                  }
-                },
-                "State": "Generated"
-              },
               "fact_sale_is_invoiced_on_invoice_date": {
                 "Binding": {
                   "ConceptualEntity": "Fact_Sales"
@@ -4984,24 +5027,11 @@
                 },
                 "State": "Generated"
               },
-              "parameter_is_named_parameter": {
+              "parameter_has_parameter": {
                 "Binding": {
                   "ConceptualEntity": "Parameter"
                 },
                 "Phrasings": [
-                  {
-                    "ID": "parameters_are_names_IDs_of_parameters",
-                    "Name": {
-                      "Name": {
-                        "Role": "parameter.parameter"
-                      },
-                      "Subject": {
-                        "Role": "parameter"
-                      }
-                    },
-                    "State": "Generated",
-                    "Weight": 0.99
-                  },
                   {
                     "Attribute": {
                       "Object": {
@@ -5012,6 +5042,19 @@
                       }
                     },
                     "ID": "parameters_have_parameters",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  },
+                  {
+                    "ID": "parameters_are_names_IDs_of_parameters",
+                    "Name": {
+                      "Name": {
+                        "Role": "parameter.parameter"
+                      },
+                      "Subject": {
+                        "Role": "parameter"
+                      }
+                    },
                     "State": "Generated",
                     "Weight": 0.99
                   }
@@ -5107,24 +5150,57 @@
         ],
         "expression": [
           "let",
-          "    Source = #date(2011, 12, 1)",
+          "    Source = #date(2011, 12, 31)",
           "in",
           "    Source"
         ],
         "kind": "m",
         "lineageTag": "b20e5a7e-7f49-484d-97e3-6afcccabd114"
+      },
+      {
+        "name": "Data_Clining_Function",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Function"
+          }
+        ],
+        "expression": [
+          "(DataSheet as table) => ",
+          "",
+          "let",
+          "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"DataSheet\", [PromoteAllScalars=true]),",
+          "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Invoice\", type any}, {\"StockCode\", type any}, {\"Description\", type text}, {\"Quantity\", Int64.Type}, {\"InvoiceDate\", type datetime}, {\"Price\", type number}, {\"Customer ID\", Int64.Type}, {\"Country\", type text}}),",
+          "    #\"Filtered Rows\" = Table.SelectRows(#\"Changed Type\", each [Customer ID] <> null and [Customer ID] <> \"\"),",
+          "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"Price\", Currency.Type}}),",
+          "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type1\", each [Price] > 0),",
+          "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"Invoice\", type text}}),",
+          "    #\"Filtered Rows2\" = Table.SelectRows(#\"Changed Type2\", each not Text.StartsWith([Invoice], \"C\")),",
+          "    #\"Filtered Rows3\" = Table.SelectRows(#\"Filtered Rows2\", each true),",
+          "    #\"Changed Type3\" = Table.TransformColumnTypes(#\"Filtered Rows3\",{{\"InvoiceDate\", type date}}),",
+          "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Changed Type3\",{\"InvoiceDate\", \"Invoice\", \"Customer ID\", \"Price\", \"Quantity\", \"Country\", \"StockCode\", \"Description\"}),",
+          "    #\"Removed Columns\" = Table.RemoveColumns(#\"Reordered Columns\",{\"StockCode\", \"Description\"})",
+          "in",
+          "    #\"Removed Columns\""
+        ],
+        "kind": "m",
+        "lineageTag": "e88475d3-316b-473f-b728-88506731d212"
       }
     ],
     "relationships": [
       {
-        "name": "AutoDetected_10403d2c-a23e-4554-ae70-bb055c739657",
+        "name": "AutoDetected_52cec1c8-b6a7-492c-a0a8-693912bd4d1e",
         "fromColumn": "Customer ID",
         "fromTable": "Fact_Sales",
         "toColumn": "Customer ID",
         "toTable": "Dim_Customer"
       },
       {
-        "name": "5e2ae74c-a7d5-e821-21a2-d8fc9be37f90",
+        "name": "aafa69ae-f755-6843-5fc4-c8691b1f1db7",
         "fromColumn": "InvoiceDate",
         "fromTable": "Fact_Sales",
         "toColumn": "Date",
@@ -5133,236 +5209,6 @@
     ],
     "sourceQueryCulture": "en-US",
     "tables": [
-      {
-        "name": "Fact_Sales",
-        "annotations": [
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Invoice",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "86577d39-6b6d-4331-857e-c81b137de7a6",
-            "sourceColumn": "Invoice",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Quantity",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "80224408-7b3b-4b44-80a4-51b7eca4a341",
-            "sourceColumn": "Quantity",
-            "summarizeBy": "sum"
-          },
-          {
-            "name": "InvoiceDate",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "UnderlyingDateTimeDataType",
-                "value": "Date"
-              }
-            ],
-            "dataType": "dateTime",
-            "formatString": "Short Date",
-            "lineageTag": "1c63196d-effd-4062-b786-662da7799c33",
-            "sourceColumn": "InvoiceDate",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Price",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
-            "dataType": "decimal",
-            "lineageTag": "dee25a75-d43b-4f08-bbc1-a4214f6262d5",
-            "sourceColumn": "Price",
-            "summarizeBy": "sum"
-          },
-          {
-            "name": "Customer ID",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "137fae89-9733-4e05-9126-371237d630a2",
-            "sourceColumn": "Customer ID",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Country",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "309c9356-f66d-42b2-bd2b-3e5d0c0a1467",
-            "sourceColumn": "Country",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Name",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "ff873f9d-0b8c-4c39-b3b3-1180389eb483",
-            "sourceColumn": "Name",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Month Since First Transation",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "expression": [
-              "",
-              "    DATEDIFF(",
-              "        RELATED(Dim_Customer[First_transation_month]),",
-              "        RELATED(DimDate[Date]),",
-              "        MONTH",
-              "    )"
-            ],
-            "formatString": "0",
-            "isDataTypeInferred": true,
-            "lineageTag": "24c6335c-9b6c-4767-b584-58c2c355c0e8",
-            "summarizeBy": "sum",
-            "type": "calculated"
-          }
-        ],
-        "lineageTag": "cf195353-8c47-48ce-9e85-820478ce5ede",
-        "partitions": [
-          {
-            "name": "Fact_Sales",
-            "mode": "import",
-            "source": {
-              "expression": [
-                "let",
-                "    Source = Excel.Workbook(File.Contents(\"H:\\_Portfolio Project Github\\Chohort Analysis\\online_retail_II.xlsx\"), null, true),",
-                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Kind] = \"Sheet\")),",
-                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Filtered Rows\",{\"Item\", \"Kind\", \"Hidden\"}),",
-                "    #\"Invoked Custom Function\" = Table.AddColumn(#\"Removed Columns\", \"Clean_Data\", each Clean_Data_Function([Data])),",
-                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Invoked Custom Function\",{\"Data\"}),",
-                "    #\"Expanded Clean_Data\" = Table.ExpandTableColumn(#\"Removed Columns1\", \"Clean_Data\", {\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"}, {\"Invoice\", \"InvoiceDate\", \"Customer ID\", \"Country\", \"Quantity\", \"Price\"}),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded Clean_Data\",{{\"InvoiceDate\", type date}}),",
-                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type\", each true),",
-                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"Quantity\", Int64.Type}, {\"Price\", Currency.Type}, {\"Customer ID\", Int64.Type}, {\"Invoice\", type text}}),",
-                "    #\"Filtered Rows2\" = Table.SelectRows(#\"Changed Type1\", each true)",
-                "in",
-                "    #\"Filtered Rows2\""
-              ],
-              "type": "m"
-            }
-          }
-        ]
-      },
-      {
-        "name": "Dim_Customer",
-        "annotations": [
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Customer ID",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "fa86e4ac-7b92-4a05-9349-05e5aefdfe28",
-            "sourceColumn": "Customer ID",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "First_transation_month",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              },
-              {
-                "name": "UnderlyingDateTimeDataType",
-                "value": "Date"
-              }
-            ],
-            "dataType": "dateTime",
-            "formatString": "Short Date",
-            "lineageTag": "846bfa7d-a4e6-4bf2-85ad-fed120b4f346",
-            "sourceColumn": "First_transation_month",
-            "summarizeBy": "none"
-          }
-        ],
-        "lineageTag": "0c0424eb-3cd8-493a-9b5a-f0f8063cf424",
-        "partitions": [
-          {
-            "name": "Dim_Customer",
-            "mode": "import",
-            "source": {
-              "expression": [
-                "let",
-                "    Source = Fact_Sales,",
-                "    #\"Grouped Rows\" = Table.Group(Source, {\"Customer ID\"}, {{\"First_transation_month\", each List.Min([InvoiceDate]), type nullable date}}),",
-                "    #\"Calculated Start of Month\" = Table.TransformColumns(#\"Grouped Rows\",{{\"First_transation_month\", Date.StartOfMonth, type date}})",
-                "in",
-                "    #\"Calculated Start of Month\""
-              ],
-              "type": "m"
-            }
-          }
-        ]
-      },
       {
         "name": "DimDate",
         "annotations": [
@@ -5411,7 +5257,7 @@
               }
             ],
             "dataType": "dateTime",
-            "formatString": "mmmm d\\, yyyy",
+            "formatString": "mmmm yyyy",
             "lineageTag": "fcdecbb5-4cfd-487b-bf3f-b2bd49eae75d",
             "sourceColumn": "Start of Month",
             "summarizeBy": "none"
@@ -5557,7 +5403,7 @@
               "",
               "CALCULATE(",
               "    [Active Customer],",
-              "    Fact_Sales[Month Since First Transation]=0)"
+              "    Fact_Sales[Month Since First Transaction]=0)"
             ],
             "formatString": "0",
             "lineageTag": "8e4e5f93-55cc-4c14-a3ca-b3b8582a1e17"
@@ -5572,14 +5418,16 @@
               "",
               "VAR _maxDate = MAX(DimDate[Start of Month])",
               "",
+              "",
               "RETURN",
-              "    CALCULATE(",
-              "        [Active Customer],",
-              "        REMOVEFILTERS(DimDate[Start of Month]),",
-              "        RELATEDTABLE(Dim_Customer),",
-              "        Dim_Customer[First_transation_month]>= _minDate",
-              "            && Dim_Customer[First_transation_month]<= _maxDate",
-              "    )"
+              "CALCULATE(",
+              "    [Active Customer],",
+              "    REMOVEFILTERS(DimDate[Start of Month]),",
+              "    RELATEDTABLE(Dim_Customer),",
+              "    Dim_Customer[First_transation_month] >= _minDate ",
+              "        &&",
+              "        Dim_Customer[First_transation_month] <= _maxDate",
+              ")"
             ],
             "formatString": "0",
             "lineageTag": "bcf8df61-8e0a-46db-83dc-97a97cfcf7fb"
@@ -5653,7 +5501,7 @@
               "VAR _New_customer = ",
               "    CALCULATETABLE(",
               "        VALUES(Fact_Sales[Customer ID]),",
-              "        Fact_Sales[Month Since First Transation] = 0",
+              "        Fact_Sales[Month Since First Transaction] = 0",
               "    )",
               "",
               "VAR _Recovered_Customers = ",
@@ -5689,6 +5537,13 @@
             ],
             "formatString": "0",
             "lineageTag": "c24e6a5f-85c2-4f45-9ccd-b17e29f7057d"
+          },
+          {
+            "name": "T_C",
+            "displayFolder": "Cohort Measure",
+            "expression": "[New Customer] + [Recovered Customers] + [Retaind Customers]",
+            "formatString": "0",
+            "lineageTag": "2c51be41-68b5-4fc2-bcaa-1c12efea5373"
           }
         ],
         "partitions": [
@@ -5804,6 +5659,223 @@
                 "}"
               ],
               "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_Sales",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "InvoiceDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "ab1a6f6e-9f13-47b5-b612-7488a739bdab",
+            "sourceColumn": "InvoiceDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Invoice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "39141d1b-b1de-4541-8a45-001fedab818c",
+            "sourceColumn": "Invoice",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8fd2cfbb-bb0a-41f2-b5cb-601635c40ab0",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "bfe81232-8659-458b-9f13-add01deba695",
+            "sourceColumn": "Price",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "97be608e-14c7-434e-8f16-53d3dd2cce16",
+            "sourceColumn": "Quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d8782250-2852-4537-81a9-53df09be75ef",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month Since First Transaction",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              "    DATEDIFF(",
+              "        RELATED(Dim_Customer[First_Transation_Month]),",
+              "        RELATED(DimDate[Date]),",
+              "        MONTH",
+              "    )"
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "cc90f811-553f-4113-8e48-17de79f2b0d7",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "a0d362fd-a5b4-4ae1-ba38-7110d0e60bed",
+        "partitions": [
+          {
+            "name": "Fact_Sales",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"H:\\_Portfolio Project Github\\Chohort Analysis\\online_retail_II.xlsx\"), null, true),",
+                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Kind] = \"Sheet\")),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Filtered Rows\",{\"Name\", \"Data\"}),",
+                "    #\"Invoked Custom Function\" = Table.AddColumn(#\"Removed Other Columns\", \"Data_Clining_Function\", each Data_Clining_Function([Data])),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Invoked Custom Function\",{\"Data\"}),",
+                "    #\"Expanded Data_Clining_Function\" = Table.ExpandTableColumn(#\"Removed Columns\", \"Data_Clining_Function\", {\"InvoiceDate\", \"Invoice\", \"Customer ID\", \"Price\", \"Quantity\", \"Country\"}, {\"InvoiceDate\", \"Invoice\", \"Customer ID\", \"Price\", \"Quantity\", \"Country\"}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Expanded Data_Clining_Function\",{\"Name\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Removed Columns1\",{{\"InvoiceDate\", type date}, {\"Invoice\", type text}, {\"Customer ID\", Int64.Type}, {\"Price\", Currency.Type}, {\"Quantity\", Int64.Type}, {\"Country\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Customer",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "750e660f-52fb-4b7a-a766-aa0713e2a048",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "First_transation_month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "04ea4419-bb27-4fcb-b5d0-28270e129a6f",
+            "sourceColumn": "First_transation_month",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "38824afe-1c9d-4b83-8e85-a1c5d608af15",
+        "partitions": [
+          {
+            "name": "Dim_Customer",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Fact_Sales,",
+                "    #\"Grouped Rows\" = Table.Group(Source, {\"Customer ID\"}, {{\"First_Join\", each List.Min([InvoiceDate]), type nullable date}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Grouped Rows\",{{\"First_Join\", \"First_transation_month\"}}),",
+                "    #\"Calculated Start of Month\" = Table.TransformColumns(#\"Renamed Columns\",{{\"First_transation_month\", Date.StartOfMonth, type date}})",
+                "in",
+                "    #\"Calculated Start of Month\""
+              ],
+              "type": "m"
             }
           }
         ]
