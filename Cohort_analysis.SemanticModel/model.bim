@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Clean_Data_Function\",\"StartDate\",\"EndDate\",\"DimDate\",\"_Measure\",\"Fact_Sales\",\"Data_Clining_Function\",\"Dim_Customer\"]"
+        "value": "[\"Clean_Data_Function\",\"StartDate\",\"EndDate\",\"DimDate\",\"_Measure\",\"Fact_Sales\",\"Data_Clining_Function\",\"Dim_Customer\",\"Data Refresh\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -5874,6 +5874,96 @@
                 "    #\"Calculated Start of Month\" = Table.TransformColumns(#\"Renamed Columns\",{{\"First_transation_month\", Date.StartOfMonth, type date}})",
                 "in",
                 "    #\"Calculated Start of Month\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Data Refresh",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "DateTime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "cad96314-598b-4bb7-9115-e7b6ade12288",
+            "sourceColumn": "DateTime",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "7d678d6c-7463-4377-8d1b-ef2b042bd232",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Time",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Time"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Time",
+            "lineageTag": "796aaec4-bbfd-45d7-8855-6811e1bb6609",
+            "sourceColumn": "Time",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "084ea0ae-1a09-427c-b111-3126c2c90088",
+        "partitions": [
+          {
+            "name": "Data Refresh",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = DateTime.LocalNow(),",
+                "    #\"Converted to Table\" = #table(1, {{Source}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Converted to Table\",{{\"Column1\", \"DateTime\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"DateTime\", type datetime}}),",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(#\"Changed Type\", \"DateTime\", \"DateTime - Copy\"),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Duplicated Column\",{{\"DateTime - Copy\", \"Date\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"Date\", type date}}),",
+                "    #\"Duplicated Column1\" = Table.DuplicateColumn(#\"Changed Type1\", \"DateTime\", \"DateTime - Copy\"),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Duplicated Column1\",{{\"DateTime - Copy\", \"Time\"}}),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Renamed Columns2\",{{\"Time\", type time}})",
+                "in",
+                "    #\"Changed Type2\""
               ],
               "type": "m"
             }

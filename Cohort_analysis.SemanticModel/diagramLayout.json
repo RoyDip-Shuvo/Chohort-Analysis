@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 117,
-            "y": 344
+            "y": 393.5
           },
           "nodeIndex": "Fact_Sales",
           "nodeLineageTag": "cf195353-8c47-48ce-9e85-820478ce5ede",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 0,
-            "y": 108
+            "y": 157.5
           },
           "nodeIndex": "Dim_Customer",
           "nodeLineageTag": "0c0424eb-3cd8-493a-9b5a-f0f8063cf424",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 405,
-            "y": 99
+            "y": 148.5
           },
           "nodeIndex": "DimDate",
           "nodeLineageTag": "9c4200b0-3e2e-4451-b8f0-a4b93fac6d60",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 838,
-            "y": 117
+            "y": 166.5
           },
           "nodeIndex": "_Measure",
           "nodeLineageTag": "841983c5-1ba6-4120-baf5-473c445cb668",
@@ -63,10 +63,23 @@
         {
           "location": {
             "x": 1420,
-            "y": 214
+            "y": 263.5
           },
           "nodeIndex": "Parameter",
           "nodeLineageTag": "57e96fc2-7bca-4354-a5ce-85d5a49831e9",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 232
+          },
+          "nodeIndex": "Data Refresh",
+          "nodeLineageTag": "084ea0ae-1a09-427c-b111-3126c2c90088",
           "size": {
             "height": 152,
             "width": 234
