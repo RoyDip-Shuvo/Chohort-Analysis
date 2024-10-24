@@ -175,8 +175,8 @@ Retention Rate
   DIVIDE([Cohort Performance], [New Customer])
 ```
 **Recovered & Reteined Customer**
-[Recovered Customer](H:\_Portfolio Project Github\Chohort Analysis\Image\Github\Recovered Customer.jpg)
-Recovered Customer
+![Recovered Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/Recovered%20Customer.jpg)
+Recovered Customer & Retaind Customers Dax Code:
  ```bash
    Recovered Customers = 
   VAR _Customers_This_Month = 
@@ -200,10 +200,12 @@ Recovered Customer
   RETURN
     COUNTROWS(_Recovered_Customers)
 
-```
 
-Retaind Customers 
- ```bash
+
+----------------------------------------------------------------------------------
+
+
+
   Retaind Customers = 
   VAR _ThisMonth=VALUES(Fact_Sales[Customer ID])
   VAR _LastMonth = CALCULATETABLE(
