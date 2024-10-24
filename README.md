@@ -174,7 +174,8 @@ Retention Rate
   Retention Rate = 
   DIVIDE([Cohort Performance], [New Customer])
 ```
-
+**Recovered & Reteined Customer**
+[Recovered Customer](H:\_Portfolio Project Github\Chohort Analysis\Image\Github\Recovered Customer.jpg)
 Recovered Customer
  ```bash
    Recovered Customers = 
@@ -217,26 +218,7 @@ Retaind Customers
   COUNTROWS(_RetaindCustomer)
 ```
 
-Lost Customers 
- ```bash
-  Lost_customer = 
 
-  VAR _Customers_This_Month = 
-    VALUES(Fact_Sales[Customer ID])
-
-  VAR _Customer_last_month = 
-    CALCULATETABLE(
-        VALUES(Fact_Sales[Customer ID]),
-        PREVIOUSMONTH(DimDate[Start of Month])
-    )
-
-  VAR _Lost_Customer =
-    EXCEPT(_Customer_last_month, _Customers_This_Month)
-
-  RETURN
-    COUNTROWS(_Lost_Customer)
-
-  ```
 
 
 
