@@ -142,7 +142,8 @@ Active Customer & New Customer:
 ```
 
 
-*** Cohort Performance
+### Cohort Performance
+
 ![Cohort Performance](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_3_Details_Cohort.jpg)
 
 Dax Code:
