@@ -142,38 +142,6 @@ Active Customer & New Customer:
 ```
 
 
-### Cohort Performance
-
-![Cohort Performance](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_3_Details_Cohort.jpg)
-
-Dax Code:
-
- ```bash
-  Cohort Performance = 
-
-  VAR _minDate = MIN(DimDate[Start of Month])
-
-  VAR _maxDate = MAX(DimDate[Start of Month])
-
-
-  RETURN
-  CALCULATE(
-    [Active Customer],
-    REMOVEFILTERS(DimDate[Start of Month]),
-    RELATEDTABLE(Dim_Customer),
-    Dim_Customer[First_transation_month] >= _minDate 
-        &&
-        Dim_Customer[First_transation_month] <= _maxDate
-  )
-
-
-```
-
-Retention Rate
- ```bash
-  Retention Rate = 
-  DIVIDE([Cohort Performance], [New Customer])
-```
 **Recovered & Reteined Customer**
 
 ![Recovered Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/Recovered%20Customer.jpg)
@@ -224,6 +192,43 @@ Recovered Customer & Retaind Customers Dax Code:
 
 
 
+### Cohort Performance
+
+![Cohort Performance](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_3_Details_Cohort.jpg)
+
+Cohort Performance Dax Code:
+
+ ```bash
+  Cohort Performance = 
+
+  VAR _minDate = MIN(DimDate[Start of Month])
+
+  VAR _maxDate = MAX(DimDate[Start of Month])
+
+
+  RETURN
+  CALCULATE(
+    [Active Customer],
+    REMOVEFILTERS(DimDate[Start of Month]),
+    RELATEDTABLE(Dim_Customer),
+    Dim_Customer[First_transation_month] >= _minDate 
+        &&
+        Dim_Customer[First_transation_month] <= _maxDate
+  )
+
+
+```
+
+### Retaintion Rate
+
+![Retaintion Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_6_Retaintion%20Rate.jpg)
+
+Retention Rate dax Code:
+
+ ```bash
+  Retention Rate = 
+  DIVIDE([Cohort Performance], [New Customer])
+```
 
 
 
@@ -231,4 +236,4 @@ Recovered Customer & Retaind Customers Dax Code:
 ![Overview](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_2_Overview_final.jpg)
 ![Churned Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_4_Churned%20Customer.jpg)
 ![Churned Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_5_Churned%20Rate.jpg)
-![Retaintion Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_6_Retaintion%20Rate.jpg)
+
