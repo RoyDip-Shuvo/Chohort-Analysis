@@ -1,6 +1,9 @@
 # Cohort Analysis
-## Executive Summary            [Live Dashboard Link](https://app.powerbi.com/view?r=eyJrIjoiMjQ1ODA3OTItMjZkNC00ODExLThlZTEtZWM1ZDNhODI3ZTZkIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9)
+## Executive Summary
 The Customer Retention Cohort Analysis Dashboard provides a data-driven perspective on customer acquisition, retention, and churn, allowing businesses to track their customer lifecycle performance. This Power BI report uses cohort analysis to deliver actionable insights into customer behavior and retention rates over time, helping businesses understand key metrics that influence their growth and sustainability.
+
+### [Live Dashboard Link](https://app.powerbi.com/view?r=eyJrIjoiMjQ1ODA3OTItMjZkNC00ODExLThlZTEtZWM1ZDNhODI3ZTZkIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9)
+
 
 ![Navigation Page](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_1_Navigation.jpg)
 
@@ -33,6 +36,25 @@ in
 
 - Power Query Integration: Leveraged Power Query's capabilities to efficiently merge and clean the data.
 - Data Merging: Utilized the ```Invoke Custom Function``` feature to combine the two datasets into a single table.
+-  Use this code for data marge and clean.
+  ```bash
+  (DataSheet as table) => 
+
+let
+    #"Promoted Headers" = Table.PromoteHeaders(#"DataSheet", [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Invoice", type any}, {"StockCode", type any}, {"Description", type text}, {"Quantity", Int64.Type}, {"InvoiceDate", type datetime}, {"Price", type number}, {"Customer ID", Int64.Type}, {"Country", type text}}),
+    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Customer ID] <> null and [Customer ID] <> ""),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Filtered Rows",{{"Price", Currency.Type}}),
+    #"Filtered Rows1" = Table.SelectRows(#"Changed Type1", each [Price] > 0),
+    #"Changed Type2" = Table.TransformColumnTypes(#"Filtered Rows1",{{"Invoice", type text}}),
+    #"Filtered Rows2" = Table.SelectRows(#"Changed Type2", each not Text.StartsWith([Invoice], "C")),
+    #"Filtered Rows3" = Table.SelectRows(#"Filtered Rows2", each true),
+    #"Changed Type3" = Table.TransformColumnTypes(#"Filtered Rows3",{{"InvoiceDate", type date}}),
+    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type3",{"InvoiceDate", "Invoice", "Customer ID", "Price", "Quantity", "Country", "StockCode", "Description"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"StockCode", "Description"})
+in
+    #"Removed Columns"
+  ```
 - Column Removal: Eliminated redundant or irrelevant columns to streamline the data.
 - Data Type Conversion: Adjusted data types (e.g., text to number) for accurate analysis and calculations.
 
