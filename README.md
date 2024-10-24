@@ -76,6 +76,7 @@ in
 **Calculated Columns and Measures**
 - Developed calculated columns in Power Query, such as Customer Acquisition Month and Churn Status, to enable tracking of customer cohorts and determine when customers drop off or return.
 - The following measure calculates the number of months that have passed since a customer's first transaction. 
+
   ```bash
   Month Since First Transaction = 
       DATEDIFF(
@@ -99,6 +100,7 @@ in
 
 
 Here are Some Regular measure used for this KIP Card
+
 ```bash
 
 
@@ -123,9 +125,12 @@ Average Order Value = DIVIDE([Total Revenue], [Total Orders])
 
 ```
 
+
+
 Active Customer & New Customer: 
 
 ![Active & New Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/New%20%26%20Active%20Customer.jpg)
+
   ```bash
   Active Customer = 
   COUNTROWS(VALUES(Fact_Sales[Customer ID]))
@@ -218,6 +223,34 @@ Cohort Performance Dax Code:
 
 
 ```
+### Churned Customer
+
+![Churned Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_4_Churned%20Customer.jpg)
+
+Churned Customer Dax Code:
+
+ ```bash
+  Churned Customer = 
+   SWITCH(
+      TRUE(),
+      ISBLANK([Retaintion Rate]),
+      BLANK(),
+  [New Customer] - [Cohort Performance])
+```
+
+
+
+### Churned Rate
+
+![Churned Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_5_Churned%20Rate.jpg)
+
+Churned Rate Dax Code: 
+
+```bash
+    Churned rate = 
+    DIVIDE([Churned Customer], [New Customer])
+```
+
 
 ### Retaintion Rate
 
@@ -226,14 +259,6 @@ Cohort Performance Dax Code:
 Retention Rate dax Code:
 
  ```bash
-  Retention Rate = 
-  DIVIDE([Cohort Performance], [New Customer])
+    Retention Rate = 
+    DIVIDE([Cohort Performance], [New Customer])
 ```
-
-
-
-
-![Overview](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_2_Overview_final.jpg)
-![Churned Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_4_Churned%20Customer.jpg)
-![Churned Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_5_Churned%20Rate.jpg)
-
