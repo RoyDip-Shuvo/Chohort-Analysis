@@ -4,6 +4,9 @@ The Customer Retention Cohort Analysis Dashboard provides a data-driven perspect
 
 ![Navigation Page](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_1_Navigation.jpg)
 
+## Data Processing Overview
+Before building the Customer Retention Cohort Analysis Dashboard, the data went through several preprocessing and transformation steps using Power Query to ensure data accuracy and consistency. Below is a summary of the key data processing tasks:
+
 
 ### Dashboard Highlights:
 Revenue Metrics
