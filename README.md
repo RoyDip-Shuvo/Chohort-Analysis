@@ -58,6 +58,130 @@ in
 - Column Removal: Eliminated redundant or irrelevant columns to streamline the data.
 - Data Type Conversion: Adjusted data types (e.g., text to number) for accurate analysis and calculations.
 
+** Dim_Customer **
+Created a Dim_Customer table that consolidates all customer-related information (e.g., customer ID, acquisition date, demographics). This dimension table was used to build relationships with transaction data for cohort analysis and improve overall model performance.
+Code
+
+```dash
+let
+    Source = Fact_Sales,
+    #"Grouped Rows" = Table.Group(Source, {"Customer ID"}, {{"First_Join", each List.Min([InvoiceDate]), type nullable date}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Grouped Rows",{{"First_Join", "First_transation_month"}}),
+    #"Calculated Start of Month" = Table.TransformColumns(#"Renamed Columns",{{"First_transation_month", Date.StartOfMonth, type date}})
+in
+    #"Calculated Start of Month"
+```
+
+**Calculated Columns and Measures**
+- Developed calculated columns in Power Query, such as Customer Acquisition Month and Churn Status, to enable tracking of customer cohorts and determine when customers drop off or return.
+- The following measure calculates the number of months that have passed since a customer's first transaction. 
+  ```bash
+  Month Since First Transaction = 
+      DATEDIFF(
+        RELATED(Dim_Customer[First_Transation_Month]),
+        RELATED(DimDate[Date]),
+        MONTH
+      )
+  ```
+  
+- Measures in DAX were added for Cohort performance, Retention rates, Total sales, and Other KPIs.
+
+  ```bash
+  Active Customer = 
+  COUNTROWS(VALUES(Fact_Sales[Customer ID]))
+
+
+  New Customer = 
+  CALCULATE(
+    [Active Customer],
+    Fact_Sales[Month Since First Transaction]=0)
+
+
+  Cohort Performance = 
+
+  VAR _minDate = MIN(DimDate[Start of Month])
+
+  VAR _maxDate = MAX(DimDate[Start of Month])
+
+
+  RETURN
+  CALCULATE(
+    [Active Customer],
+    REMOVEFILTERS(DimDate[Start of Month]),
+    RELATEDTABLE(Dim_Customer),
+    Dim_Customer[First_transation_month] >= _minDate 
+        &&
+        Dim_Customer[First_transation_month] <= _maxDate
+  )
+
+
+
+  Retaintion Rate = 
+  DIVIDE([Cohort Performance], [New Customer])
+
+
+  Recovered Customers = 
+  VAR _Customers_This_Month = 
+    VALUES(Fact_Sales[Customer ID])
+
+  VAR _Customer_last_month = 
+    CALCULATETABLE(
+        VALUES(Fact_Sales[Customer ID]),
+        PREVIOUSMONTH(DimDate[Start of Month])
+    )
+
+  VAR _New_customer = 
+    CALCULATETABLE(
+        VALUES(Fact_Sales[Customer ID]),
+        Fact_Sales[Month Since First Transaction] = 0
+    )
+
+  VAR _Recovered_Customers = 
+    EXCEPT(EXCEPT(_Customers_This_Month,_Customer_last_month), _New_customer)
+
+  RETURN
+    COUNTROWS(_Recovered_Customers)
+
+
+
+
+  Retaind Customers = 
+  VAR _ThisMonth=VALUES(Fact_Sales[Customer ID])
+  VAR _LastMonth = CALCULATETABLE(
+    VALUES(Fact_Sales[Customer ID]),
+    PREVIOUSMONTH(DimDate[Start of Month])
+  )
+  
+  VAR _RetaindCustomer = 
+    INTERSECT(_ThisMonth, _LastMonth)
+  
+  RETURN
+  COUNTROWS(_RetaindCustomer)
+
+
+
+
+  Lost_customer = 
+
+  VAR _Customers_This_Month = 
+    VALUES(Fact_Sales[Customer ID])
+
+  VAR _Customer_last_month = 
+    CALCULATETABLE(
+        VALUES(Fact_Sales[Customer ID]),
+        PREVIOUSMONTH(DimDate[Start of Month])
+    )
+
+  VAR _Lost_Customer =
+    EXCEPT(_Customer_last_month, _Customers_This_Month)
+
+  RETURN
+    COUNTROWS(_Lost_Customer)
+
+
+  
+  ```
+
 
 ### Dashboard Highlights:
 Revenue Metrics
