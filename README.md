@@ -175,7 +175,9 @@ Retention Rate
   DIVIDE([Cohort Performance], [New Customer])
 ```
 **Recovered & Reteined Customer**
+
 ![Recovered Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/Recovered%20Customer.jpg)
+
 Recovered Customer & Retaind Customers Dax Code:
  ```bash
    Recovered Customers = 
