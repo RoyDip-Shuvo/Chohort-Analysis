@@ -1,6 +1,7 @@
 # Cohort Analysis
 ## Executive Summary
 The Customer Retention Cohort Analysis Dashboard provides a data-driven perspective on customer acquisition, retention, and churn, allowing businesses to track their customer lifecycle performance. This Power BI report uses cohort analysis to deliver actionable insights into customer behavior and retention rates over time, helping businesses understand key metrics that influence their growth and sustainability.
+
 [Live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMjQ1ODA3OTItMjZkNC00ODExLThlZTEtZWM1ZDNhODI3ZTZkIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9)
 
 ### Dashboard Highlights:
