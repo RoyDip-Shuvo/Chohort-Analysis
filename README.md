@@ -193,12 +193,14 @@ Lost Customers
 
 ### Dashboard Highlights:
 **Revenue Metrics**
-Total Revenue: $17.74M
-Total Customers: 5.88K
-Average Revenue per Customer: $3.02K
-Total Orders: 36.97K
-Average Order Value: $479.95
+- Total Revenue: $17.74M
+- Total Customers: 5.88K
+- Average Revenue per Customer: $3.02K
+- Total Orders: 36.97K
+- Average Order Value: $479.95
+
 ![Regular KPI](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/Regular%20KPi.jpg)
+
 
 Here are Some Regular measure used for this KIP Card
 ```bash
