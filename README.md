@@ -58,7 +58,8 @@ in
 - Column Removal: Eliminated redundant or irrelevant columns to streamline the data.
 - Data Type Conversion: Adjusted data types (e.g., text to number) for accurate analysis and calculations.
 
-** Dim_Customer **
+**Dim_Customer**
+
 Created a Dim_Customer table that consolidates all customer-related information (e.g., customer ID, acquisition date, demographics). This dimension table was used to build relationships with transaction data for cohort analysis and improve overall model performance.
 Code
 
@@ -86,23 +87,66 @@ in
   
 - Measures in DAX were added for Cohort performance, Retention rates, Total sales, and Other KPIs.
 
-Active Customer: 
+### Dashboard Highlights:
+**Revenue Metrics**
+- Total Revenue: $17.74M
+- Total Customers: 5.88K
+- Average Revenue per Customer: $3.02K
+- Total Orders: 36.97K
+- Average Order Value: $479.95
+
+![Regular KPI](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/Regular%20KPi.jpg)
+
+
+Here are Some Regular measure used for this KIP Card
+```bash
+
+
+Total Revenue = SUMX(Fact_Sales, Fact_Sales[Quantity]*Fact_Sales[Price])
+
+
+---------
+Total Customer = COUNTROWS(Dim_Customer)
+
+
+---------
+Average Revenue per customer  = DIVIDE([Total Revenue], [Total Customer])
+
+
+---------
+Total Orders = DISTINCTCOUNT(Fact_Sales[Invoice])
+
+
+---------
+Average Order Value = DIVIDE([Total Revenue], [Total Orders])
+
+
+```
+
+Active Customer & New Customer: 
+
+![Active & New Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/New%20%26%20Active%20Customer.jpg)
   ```bash
   Active Customer = 
   COUNTROWS(VALUES(Fact_Sales[Customer ID]))
-```
 
-New Customer = 
- ```bash
+
+-----------
+
+
   New Customer = 
   CALCULATE(
     [Active Customer],
     Fact_Sales[Month Since First Transaction]=0)
 
 ```
-**Cohort Performance**
+
+
+*** Cohort Performance
 ![Cohort Performance](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_3_Details_Cohort.jpg)
+
 Dax Code:
+
  ```bash
   Cohort Performance = 
 
@@ -123,6 +167,7 @@ Dax Code:
 
 
 ```
+
 Retention Rate
  ```bash
   Retention Rate = 
@@ -193,38 +238,6 @@ Lost Customers
   ```
 
 
-### Dashboard Highlights:
-**Revenue Metrics**
-- Total Revenue: $17.74M
-- Total Customers: 5.88K
-- Average Revenue per Customer: $3.02K
-- Total Orders: 36.97K
-- Average Order Value: $479.95
-
-![Regular KPI](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/Regular%20KPi.jpg)
-
-
-Here are Some Regular measure used for this KIP Card
-```bash
-
-
-Total Revenue = SUMX(Fact_Sales, Fact_Sales[Quantity]*Fact_Sales[Price])
-
----------
-Total Customer = COUNTROWS(Dim_Customer)
-
----------
-Average Revenue per customer  = DIVIDE([Total Revenue], [Total Customer])
-
----------
-Total Orders = DISTINCTCOUNT(Fact_Sales[Invoice])
-
-
----------
-Average Order Value = DIVIDE([Total Revenue], [Total Orders])
-
-
-```
 
 
 
