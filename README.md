@@ -6,11 +6,10 @@ The Customer Retention Cohort Analysis Dashboard provides a data-driven perspect
 
 ### Dashboard Highlights:
 Revenue Metrics
-
--Total Revenue: $17.74M
--Average Revenue per Customer: $3.02K
--Total Orders: 36.97K
--Average Order Value: $479.95
+- Total Revenue: $17.74M
+- Average Revenue per Customer: $3.02K
+- Total Orders: 36.97K
+- Average Order Value: $479.95
 
 ![Navigation Page](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_1_Navigation.jpg)
 ![Overview](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_2_Overview_final.jpg)
