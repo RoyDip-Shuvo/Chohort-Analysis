@@ -8,7 +8,7 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.137.751.0 (24.10)"
+        "value": "2.137.952.0 (24.10)"
       },
       {
         "name": "PBI_QueryOrder",
@@ -26,6 +26,295 @@
         "linguisticMetadata": {
           "content": {
             "Entities": {
+              "data_refresh": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Data Refresh"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "data refresh": {
+                      "State": "Generated"
+                    }
+                  },
+                  {
+                    "refresh": {
+                      "State": "Generated",
+                      "Weight": 0.97
+                    }
+                  },
+                  {
+                    "information refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.6
+                    }
+                  },
+                  {
+                    "fact refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.6
+                    }
+                  },
+                  {
+                    "info refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.6
+                    }
+                  },
+                  {
+                    "statistic refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.6
+                    }
+                  },
+                  {
+                    "document refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.582
+                    }
+                  },
+                  {
+                    "figure refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.582
+                    }
+                  },
+                  {
+                    "record refresh": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.582
+                    }
+                  }
+                ]
+              },
+              "data_refresh.date": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Data Refresh",
+                    "ConceptualProperty": "Date"
+                  }
+                },
+                "SemanticType": "Time",
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "date": {
+                      "State": "Generated"
+                    }
+                  },
+                  {
+                    "moment": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.736
+                    }
+                  },
+                  {
+                    "period": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.714
+                    }
+                  }
+                ]
+              },
+              "data_refresh.date_time": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Data Refresh",
+                    "ConceptualProperty": "DateTime"
+                  }
+                },
+                "SemanticType": "Time",
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "date time": {
+                      "State": "Generated"
+                    }
+                  },
+                  {
+                    "DateTime": {
+                      "State": "Generated",
+                      "Type": "Noun",
+                      "Weight": 0.99
+                    }
+                  },
+                  {
+                    "date duration": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.75
+                    }
+                  },
+                  {
+                    "date interval": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.75
+                    }
+                  },
+                  {
+                    "date moment": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.75
+                    }
+                  },
+                  {
+                    "date period": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.727
+                    }
+                  },
+                  {
+                    "date timetable": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.727
+                    }
+                  },
+                  {
+                    "moment time": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.6
+                    }
+                  },
+                  {
+                    "period time": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.582
+                    }
+                  }
+                ]
+              },
+              "data_refresh.time": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Data Refresh",
+                    "ConceptualProperty": "Time"
+                  }
+                },
+                "SemanticType": "Time",
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "time": {
+                      "State": "Generated"
+                    }
+                  },
+                  {
+                    "duration": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.736
+                    }
+                  },
+                  {
+                    "interval": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.736
+                    }
+                  },
+                  {
+                    "moment": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.736
+                    }
+                  },
+                  {
+                    "period": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.714
+                    }
+                  },
+                  {
+                    "timetable": {
+                      "Source": {
+                        "Agent": "Thesaurus"
+                      },
+                      "State": "Suggested",
+                      "Type": "Noun",
+                      "Weight": 0.714
+                    }
+                  }
+                ]
+              },
               "dim_customer": {
                 "Definition": {
                   "Binding": {
@@ -525,6 +814,16 @@
                   },
                   {
                     "Cohort_Month": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Cohort": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -2922,7 +3221,7 @@
                     }
                   },
                   {
-                    "N_C %": {
+                    "N_C": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -2932,7 +3231,7 @@
                     }
                   },
                   {
-                    "N_C": {
+                    "N_C %": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -3064,7 +3363,7 @@
                     }
                   },
                   {
-                    "Rec_C %": {
+                    "Rec_C": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -3074,7 +3373,7 @@
                     }
                   },
                   {
-                    "Rec_C": {
+                    "Rec_C %": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -3200,7 +3499,7 @@
                     }
                   },
                   {
-                    "Ret_C %": {
+                    "Ret_C": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -3210,7 +3509,7 @@
                     }
                   },
                   {
-                    "Ret_C": {
+                    "Ret_C %": {
                       "Source": {
                         "Agent": "PowerBI.VisualColumnRename",
                         "Type": "External"
@@ -3851,6 +4150,105 @@
             },
             "Language": "en-US",
             "Relationships": {
+              "data_refresh_has_date": {
+                "Binding": {
+                  "ConceptualEntity": "Data Refresh"
+                },
+                "Phrasings": [
+                  {
+                    "Attribute": {
+                      "Object": {
+                        "Role": "data_refresh.date"
+                      },
+                      "Subject": {
+                        "Role": "data_refresh"
+                      }
+                    },
+                    "ID": "data_refreshes_have_dates",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  }
+                ],
+                "Roles": {
+                  "data_refresh": {
+                    "Target": {
+                      "Entity": "data_refresh"
+                    }
+                  },
+                  "data_refresh.date": {
+                    "Target": {
+                      "Entity": "data_refresh.date"
+                    }
+                  }
+                },
+                "State": "Generated"
+              },
+              "data_refresh_has_date_time": {
+                "Binding": {
+                  "ConceptualEntity": "Data Refresh"
+                },
+                "Phrasings": [
+                  {
+                    "Attribute": {
+                      "Object": {
+                        "Role": "data_refresh.date_time"
+                      },
+                      "Subject": {
+                        "Role": "data_refresh"
+                      }
+                    },
+                    "ID": "data_refreshes_have_date_times",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  }
+                ],
+                "Roles": {
+                  "data_refresh": {
+                    "Target": {
+                      "Entity": "data_refresh"
+                    }
+                  },
+                  "data_refresh.date_time": {
+                    "Target": {
+                      "Entity": "data_refresh.date_time"
+                    }
+                  }
+                },
+                "State": "Generated"
+              },
+              "data_refresh_has_time": {
+                "Binding": {
+                  "ConceptualEntity": "Data Refresh"
+                },
+                "Phrasings": [
+                  {
+                    "Attribute": {
+                      "Object": {
+                        "Role": "data_refresh.time"
+                      },
+                      "Subject": {
+                        "Role": "data_refresh"
+                      }
+                    },
+                    "ID": "data_refreshes_have_times",
+                    "State": "Generated",
+                    "Weight": 0.99
+                  }
+                ],
+                "Roles": {
+                  "data_refresh": {
+                    "Target": {
+                      "Entity": "data_refresh"
+                    }
+                  },
+                  "data_refresh.time": {
+                    "Target": {
+                      "Entity": "data_refresh.time"
+                    }
+                  }
+                },
+                "State": "Generated"
+              },
               "dim_customer_has_customer_ID": {
                 "Binding": {
                   "ConceptualEntity": "Dim_Customer"
