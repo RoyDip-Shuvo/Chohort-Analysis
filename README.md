@@ -100,7 +100,9 @@ New Customer =
     Fact_Sales[Month Since First Transaction]=0)
 
 ```
-Cohort Performance 
+**Cohort Performance**
+![Cohort Performance](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_3_Details_Cohort.jpg)
+Dax Code:
  ```bash
   Cohort Performance = 
 
@@ -227,7 +229,6 @@ Average Order Value = DIVIDE([Total Revenue], [Total Orders])
 
 
 ![Overview](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_2_Overview_final.jpg)
-![Cohort Performance](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_3_Details_Cohort.jpg)
 ![Churned Customer](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_4_Churned%20Customer.jpg)
 ![Churned Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_5_Churned%20Rate.jpg)
 ![Retaintion Rate](https://github.com/RoyDip-Shuvo/Chohort-Analysis/blob/main/Image/Github/_6_Retaintion%20Rate.jpg)
